@@ -18,7 +18,8 @@ model Provider {
   phoneNumber String @unique
   password String 
   commercialRecord String @unique
-  request Reuests[]
+  request Request[]
+  projects Project[]
 }
 
 model Client {
@@ -29,20 +30,33 @@ model Client {
   phoneNumber String @unique
   password String 
   commercialRecord String @unique
+  prjects Project[]
 }
 
 model Project {
   id String @id @default(uuid())
   projectName String 
   projectDiscription String 
-  projectDuratiom String
-  request Reuests[]
+  projectDuration String
+  publishDate DateTime @default(now())
+  documentsPrice Int ?
+  status String ?
+  finamcialInsurance Boolean?
+  initialWarranty Boolean?
+  attachments String?
+  request Request[]
+  client_id String
+  clientID Client @relation(fields: [client_id],references: [id])
+  provider_id String
+  providerID Provider @relation(fields: [provider_id],references: [id])
 }
 
-model Reuests {
+model Request {
   id String @id @default(uuid())
   name String 
-  budget Int
+  discription String
+  // budget Int
+  attachment String?
   project_id String
   project Project @relation(fields: [project_id],references: [id])
   provider_id String
