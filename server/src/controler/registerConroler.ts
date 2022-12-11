@@ -1,7 +1,28 @@
-import { Client, Provider } from "@prisma/client";
+import { Client, Provider, User } from "@prisma/client";
 import { Request, Response } from "express";
 import { prisma } from "../config/DB";
 import * as argon2 from "argon2";
+
+export const registerUser = async (req: Request, res: Response) => {
+  try {
+    const newUser = req.body as User;
+    const hashPassword = await argon2.hash(newUser.password);
+
+    newUser.password = hashPassword;
+    
+    await prisma.user.create({
+      data: newUser,
+    });
+
+    return res.status(201).json({
+      message: "client added !",
+    });
+  } catch (error) {
+    return res.status(500).json({
+      message: "server error??",
+    });
+  }
+};
 
 export const registerClient = async (req: Request, res: Response) => {
   try {
@@ -23,7 +44,6 @@ export const registerClient = async (req: Request, res: Response) => {
     });
   }
 };
-
 export const registerProvider = async (req: Request, res: Response) => {
   try {
     const newProvider = req.body as Provider;

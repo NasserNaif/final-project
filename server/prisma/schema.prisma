@@ -10,6 +10,23 @@ datasource db {
 }
 
 
+model User {
+  id String @id @default(uuid())
+  username String @unique
+  name String 
+  email String @unique
+  phoneNumber String @unique
+  password String 
+  commercialRecord String @unique
+  role Role 
+}
+
+enum Role {
+  PROVIDER 
+  CLIENT 
+}
+
+
 model Provider {
   id String @id @default(uuid())
   username String @unique
@@ -39,11 +56,7 @@ model Project {
   projectDiscription String 
   projectDuration String
   publishDate DateTime @default(now())
-  documentsPrice Int ?
-  status String ?
-  finamcialInsurance Boolean?
-  initialWarranty Boolean?
-  attachments String?
+
   request Request[]
   client_id String
   clientID Client @relation(fields: [client_id],references: [id])
@@ -55,7 +68,7 @@ model Request {
   id String @id @default(uuid())
   name String 
   discription String
-  // budget Int
+  budget Int
   attachment String?
   project_id String
   project Project @relation(fields: [project_id],references: [id])

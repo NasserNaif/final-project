@@ -4,6 +4,7 @@ import * as jwt from "jsonwebtoken";
 export interface IUser {
   id: string;
   username: string;
+  role: string;
 }
 export const protect = async (
   req: Request,
