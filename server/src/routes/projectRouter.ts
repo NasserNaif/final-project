@@ -1,17 +1,12 @@
 import express from "express";
-import {
-  getAllClient,
-  getAllProject,
-  postProject,
-} from "../controler/clientControler";
+import { getAllProject, postProject } from "../controler/projectControler";
 import { authorize, protect } from "../middleware/auth";
 import { validate } from "../middleware/validate";
 import { postProjectSchema } from "../zodSchema/projectSchema";
 
 const clientRouter = express.Router();
 
-clientRouter.get(`/client`, getAllClient);
-clientRouter.get(`/`, protect, authorize("CLIENT"), getAllProject);
+clientRouter.get(`/`, protect, getAllProject);
 clientRouter.post(
   `/`,
   protect,

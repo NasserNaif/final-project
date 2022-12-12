@@ -42,6 +42,10 @@ export const registerUserSchema = z.object({
       .min(10, `phine number must be equal 10 number`)
       .max(10, `phine number must be equal 10 number`),
 
-      role:z.enum(["CLIENT" , "PROVIDER"])
+    role: z.enum(["CLIENT", "PROVIDER"]),
+    commercialRecord: z.string({
+      required_error: "commercial Record is required !",
+      invalid_type_error: "commercial Record must be number ",
+    }),
   }),
 });

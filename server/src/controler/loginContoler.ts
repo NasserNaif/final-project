@@ -47,7 +47,6 @@ export const registerUser = async (req: Request, res: Response) => {
   try {
     const newUser = req.body as User;
     const hashPassword = await argon2.hash(newUser.password);
-    // const user_id = newUser.id;
 
     newUser.password = hashPassword;
 
@@ -55,43 +54,9 @@ export const registerUser = async (req: Request, res: Response) => {
       data: newUser,
     });
 
-  //  const updateClient =  await prisma.user.update({
-  //     where:{role:"CLIENT"},
-  //     data:{clientID:}
-  //   })
-
-    if (newUser.role == "CLIENT") {
-      const newClient = await prisma.user.findFirst({
-        where: { id: newUser.id },
-      });
-
-      if (!newClient) {
-        return res.status(400).json({
-          message: "error in user ",
-        });
-      }
-
-      await prisma.client.create({ data: { user_id: newClient.id } });
-
-      return res.status(201).json({
-        message: "client added !",
-      });
-    } 
-    if (newUser.role == "PROVIDER") {
-      const newProvider = await prisma.user.findFirst({
-        where: { id: newUser.id },
-      });
-
-      if (!newProvider) {
-        return;
-      }
-
-      await prisma.provider.create({ data: { user_id: newProvider.id } });
-
-      return res.status(201).json({
-        message: "Provider added !",
-      });
-    }
+    return res.status(201).json({
+      message: "user added !",
+    });
   } catch (error) {
     return res.status(500).json({
       message: "server error??",

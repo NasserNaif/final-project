@@ -2,7 +2,7 @@ import cors from "cors";
 import express from "express";
 import { connectDB } from "./config/DB";
 import loginRouter from "./routes/loginRoute";
-import clientRouter from "./routes/clientRouter";
+import clientRouter from "./routes/projectRouter";
 
 const app = express();
 
@@ -14,7 +14,7 @@ connectDB();
 
 // routes
 app.use(`/api/v1/login`, loginRouter);
-app.use(`/api/v1/client`, clientRouter);
+app.use(`/api/v1/project`, clientRouter);
 
 const PORT = process.env.PORT || 5008;
 
