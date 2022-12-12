@@ -1,43 +1,41 @@
 import { Request, Response } from "express";
 import { prisma } from "../config/DB";
-import { logInType } from "../zodSchema/loginSchema";
+import { logInType } from "../zodSchema/loginUserSchema";
 import * as argon2 from "argon2";
 import * as jwt from "jsonwebtoken";
+import { User } from "@prisma/client";
+import { any, date } from "zod";
 
-
-export const loginClint = async (req: Request, res: Response) => {
+export const loginUser = async (req: Request, res: Response) => {
   try {
     const { username, password } = req.body as logInType["body"];
 
-    const client = await prisma.client.findUnique({
+    const user = await prisma.user.findUnique({
       where: { username },
     });
 
-    if (!client) {
+    if (!user) {
       return res.status(400).json({
         message: "inncorect username or password !",
       });
     }
 
-    const clientPassword = await argon2.verify(client.password, password);
+    const userPassword = await argon2.verify(user.password, password);
 
-    if (!clientPassword) {
+    if (!userPassword) {
       return res.status(400).json({
         message: "inncorect password or username !",
       });
     }
     const token = jwt.sign(
-      { id: client.id, username: client.username },
+      { id: user.id, username: user.username },
       process.env.JWT_KEY as string
     );
 
-    
     return res.status(201).json({
-      message: `welcome back ${client.name}`,
+      message: `welcome back ${user.username}`,
       token,
     });
-
-
   } catch (error) {
     return res.status(500).json({
       message: "server error???",
@@ -45,37 +43,58 @@ export const loginClint = async (req: Request, res: Response) => {
   }
 };
 
-export const loginProvider = async (req: Request, res: Response) => {
+export const registerUser = async (req: Request, res: Response) => {
   try {
-    const { username, password } = req.body as logInType["body"];
+    const newUser = req.body as User;
+    const hashPassword = await argon2.hash(newUser.password);
+    // const user_id = newUser.id;
 
-    const provider = await prisma.provider.findUnique({
-      where: { username },
+    newUser.password = hashPassword;
+
+    await prisma.user.create({
+      data: newUser,
     });
 
-    if (!provider) {
-      return res.status(400).json({
-        message: "inncorect username or password !",
-      });
-    }
+  //  const updateClient =  await prisma.user.update({
+  //     where:{role:"CLIENT"},
+  //     data:{clientID:}
+  //   })
 
-    const clientPassword = await argon2.verify(provider.password, password);
-    if (!clientPassword) {
-      return res.status(400).json({
-        message: "inncorect password or username !",
+    if (newUser.role == "CLIENT") {
+      const newClient = await prisma.user.findFirst({
+        where: { id: newUser.id },
+      });
+
+      if (!newClient) {
+        return res.status(400).json({
+          message: "error in user ",
+        });
+      }
+
+      await prisma.client.create({ data: { user_id: newClient.id } });
+
+      return res.status(201).json({
+        message: "client added !",
+      });
+    } 
+    if (newUser.role == "PROVIDER") {
+      const newProvider = await prisma.user.findFirst({
+        where: { id: newUser.id },
+      });
+
+      if (!newProvider) {
+        return;
+      }
+
+      await prisma.provider.create({ data: { user_id: newProvider.id } });
+
+      return res.status(201).json({
+        message: "Provider added !",
       });
     }
-    const token = jwt.sign(
-      { id: provider.id, username: provider.username },
-      process.env.JWT_KEY as string
-    );
-    return res.status(201).json({
-      message: `welcome back ${provider.name}`,
-      token,
-    });
   } catch (error) {
     return res.status(500).json({
-      message: "server error???",
+      message: "server error??",
     });
   }
 };

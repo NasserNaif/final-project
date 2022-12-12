@@ -4,6 +4,7 @@ import * as jwt from "jsonwebtoken";
 export interface IUser {
   id: string;
   username: string;
+  role: string;
 }
 export const protect = async (
   req: Request,
@@ -31,3 +32,14 @@ export const protect = async (
     });
   }
 };
+
+export const authorize =
+  (roles: string) => (req: Request, res: Response, next: NextFunction) => {
+    const user = res.locals.user as IUser;
+    if (roles !== user.role) {
+      return res.status(403).json({
+        message: "You are not authorized to  enter this route !",
+      });
+    }
+    next();
+  };
