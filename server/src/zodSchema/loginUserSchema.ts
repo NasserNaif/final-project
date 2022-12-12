@@ -1,7 +1,6 @@
-import { log } from "util";
 import { z } from "zod";
 
-export const loginSchema = z.object({
+export const loginUserSchema = z.object({
   body: z.object({
     username: z.string({
       required_error: "username is required !",
@@ -12,9 +11,9 @@ export const loginSchema = z.object({
   }),
 });
 
-export type logInType = z.infer<typeof loginSchema>;
+export type logInType = z.infer<typeof loginUserSchema>;
 
-export const registerSchema = z.object({
+export const registerUserSchema = z.object({
   body: z.object({
     username: z
       .string({
@@ -22,10 +21,6 @@ export const registerSchema = z.object({
         invalid_type_error: "username must be string ",
       })
       .min(3, `username must be mure than 3 chars`),
-    name: z.string({
-      required_error: "name is required !??",
-      invalid_type_error: "name must be string ",
-    }),
     password: z
       .string({
         required_error: "password is required !",
@@ -47,9 +42,10 @@ export const registerSchema = z.object({
       .min(10, `phine number must be equal 10 number`)
       .max(10, `phine number must be equal 10 number`),
 
+    role: z.enum(["CLIENT", "PROVIDER"]),
     commercialRecord: z.string({
-      required_error: "Commercial Record is required !",
-      invalid_type_error: "Commercial Record must be number ",
+      required_error: "commercial Record is required !",
+      invalid_type_error: "commercial Record must be number ",
     }),
   }),
 });

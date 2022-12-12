@@ -10,41 +10,42 @@ datasource db {
 }
 
 
-model Provider {
+model User {
   id String @id @default(uuid())
   username String @unique
-  name String 
-  email String @unique 
+  name String
+  email String @unique
   phoneNumber String @unique
   password String 
   commercialRecord String @unique
-  request Reuests[]
+  role Role 
+
 }
 
-model Client {
-  id String @id @default(uuid())
-  username String @unique
-  name String 
-  email String @unique 
-  phoneNumber String @unique
-  password String 
-  commercialRecord String @unique
+enum Role {
+  PROVIDER 
+  CLIENT 
 }
+
+
 
 model Project {
   id String @id @default(uuid())
   projectName String 
   projectDiscription String 
-  projectDuratiom String
-  request Reuests[]
+  projectDuration String
+  publishDate DateTime @default(now())
+  deadLine String 
+  request Request[]
+
 }
 
-model Reuests {
+model Request {
   id String @id @default(uuid())
   name String 
+  discription String
   budget Int
+  attachment String?
   project_id String
   project Project @relation(fields: [project_id],references: [id])
-  provider_id String
-  providerID Provider @relation(fields: [provider_id],references: [id])
 }
