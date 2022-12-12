@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-export const postProject = z.object({
+export const postProjectSchema = z.object({
   body: z.object({
     projectName: z
       .string({
@@ -12,5 +12,10 @@ export const postProject = z.object({
       required_error: "project Discription is required !",
       invalid_type_error: "project Discription must be string !",
     }),
+    projectDuration: z.string({
+      required_error: "project Duration is required !",
+      invalid_type_error: "project Duration must be string !",
+    }),
+    deadLine: z.optional(z.string()),
   }),
 });

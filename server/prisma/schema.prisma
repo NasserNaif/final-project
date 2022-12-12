@@ -13,12 +13,12 @@ datasource db {
 model User {
   id String @id @default(uuid())
   username String @unique
-  name String 
   email String @unique
   phoneNumber String @unique
   password String 
   commercialRecord String @unique
   role Role 
+
 }
 
 enum Role {
@@ -27,28 +27,6 @@ enum Role {
 }
 
 
-model Provider {
-  id String @id @default(uuid())
-  username String @unique
-  name String 
-  email String @unique 
-  phoneNumber String @unique
-  password String 
-  commercialRecord String @unique
-  request Request[]
-  projects Project[]
-}
-
-model Client {
-  id String @id @default(uuid())
-  username String @unique
-  name String 
-  email String @unique 
-  phoneNumber String @unique
-  password String 
-  commercialRecord String @unique
-  prjects Project[]
-}
 
 model Project {
   id String @id @default(uuid())
@@ -56,12 +34,9 @@ model Project {
   projectDiscription String 
   projectDuration String
   publishDate DateTime @default(now())
-
+  deadLine String 
   request Request[]
-  client_id String
-  clientID Client @relation(fields: [client_id],references: [id])
-  provider_id String
-  providerID Provider @relation(fields: [provider_id],references: [id])
+
 }
 
 model Request {
@@ -72,6 +47,4 @@ model Request {
   attachment String?
   project_id String
   project Project @relation(fields: [project_id],references: [id])
-  provider_id String
-  providerID Provider @relation(fields: [provider_id],references: [id])
 }

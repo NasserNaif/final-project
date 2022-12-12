@@ -1,56 +1,101 @@
 import {
   VStack,
   Text,
-  FormControl,
-  FormLabel,
   HStack,
   Input,
   Button,
   Radio,
   RadioGroup,
+  useToast,
+  useColorModeValue,
 } from "@chakra-ui/react";
-import React from "react";
+
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 function RegisterPage() {
+  const [username, setUsername] = useState("");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [password, setPassword] = useState("");
+  const [commercialRecord, setCommercialRecord] = useState("");
+  const [role, setRole] = useState("");
+
+  const [confirmpassword, setConfirmPassword] = useState("");
+
+  const toast = useToast();
+
+  const submit = async () => {
+    try {
+    } catch {
+      toast({
+        title: "server error",
+        position: "top",
+        duration: 3000,
+        status: "error",
+      });
+    }
+  };
   return (
     <VStack
-      color={"white"}
-      bg={"blackAlpha.200"}
-      h={"100vh"}
+      p={5}
+      color={"black"}
+      bg={"#E6E3E4"}
+      // h={"74vh"}
       justify={"center"}
       alignItems={"center"}
     >
       <VStack
-        bg={"gray.700"}
-        // h={["100%", "60vh", "65vh"]}
-        w={["100%", "60vw", "70vw"]}
-        p={10}
-        borderRadius={10}
-        justify="space-around"
+        align={"start"}
+        // boxShadow={"2xl"}
+        // bg={useColorModeValue("#e6e3e4", "gray.900")}
       >
-        <Text fontSize={"1.5em"}>Register Form </Text>
+        <Text>Username :</Text>
+        <Input bg={""} type="text" value={username} w={["20vw", "35vw"]} />
+        <Text>Company name :</Text>
+        <Input bg={""} type="text" value={name} w={["20vw", "35vw"]} />
+        <Text>Commercial record :</Text>
+        <Input
+          bg={""}
+          type="text"
+          value={commercialRecord}
+          w={["20vw", "35vw"]}
+        />
+        <Text>Email :</Text>
+        <Input bg={""} type="email" value={email} w={["20vw", "35vw"]} />
+        <Text>Phone number :</Text>
+        <Input bg={""} type="text" value={phoneNumber} w={["20vw", "35vw"]} />
+        <Text>Password :</Text>
+        <Input bg={""} type="password" value={password} w={["20vw", "35vw"]} />
+        <Text>Confirm password :</Text>
+        <Input
+          bg={""}
+          type="password"
+          value={confirmpassword}
+          onChange={(e) => setConfirmPassword(e.target.value)}
+          w={["20vw", "35vw"]}
+        />
 
-        <Input bg={""} placeholder="username" />
-        <Input bg={""} placeholder="name" />
-        <Input bg={""} placeholder="email" />
-        <Input bg={""} placeholder="password" />
-        <Input bg={""} placeholder="confirm password" />
-        <Input bg={""} placeholder="phone number" />
-        <Input bg={""} placeholder="commercial Record" />
-        <RadioGroup>
-          <HStack>
-            <Radio value="PRIVIDER">PROVIDER</Radio>
+        <RadioGroup w={"100%"} onChange={setRole} value={role} justifyContent={"space-between"}>
+          <HStack justify={"space-between"}  w={"100%"}>
             <Radio value="CLIENT">CLIENT</Radio>
+            <Radio value="PROVIDER">PROVIDER</Radio>
           </HStack>
         </RadioGroup>
 
-        <Button bg={"blue.400"} w="100%">
-          Submit
-        </Button>
+        <HStack w="100%" justify={"center"} p={2}>
+          <Button
+            borderRadius={20}
+            bg={"#1A0202"}
+            color="whiteAlpha.900"
+            w={"10em"}
+          >
+            Register
+          </Button>
+        </HStack>
         <HStack>
-          <Text>Already have acount ? </Text>
-          <Link to={`/login`}>Login</Link>
+          <Text>already have account ?</Text> <Link to={"/login"}>Sign in</Link>
         </HStack>
       </VStack>
     </VStack>
