@@ -18,8 +18,16 @@ export const getAllProject = async (req: Request, res: Response) => {
 export const postProject = async (req: Request, res: Response) => {
   try {
     const newProject = req.body as Project;
+    const user = res.locals.user as IUser;
+
     await prisma.project.create({
-      data: newProject,
+      data: {
+        user_id: user.id,
+        projectName: newProject.projectName,
+        projectDiscription: newProject.projectDiscription,
+        projectDuration: newProject.projectDuration,
+        deadLine: newProject.deadLine,
+      },
     });
     return res.status(201).json({
       message: "project added seccefully !",

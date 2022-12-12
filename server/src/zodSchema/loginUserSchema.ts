@@ -21,6 +21,11 @@ export const registerUserSchema = z.object({
         invalid_type_error: "username must be string ",
       })
       .min(3, `username must be mure than 3 chars`),
+
+    name: z.string({
+      required_error: "name is required !",
+      invalid_type_error: "name must be string ",
+    }),
     password: z
       .string({
         required_error: "password is required !",
