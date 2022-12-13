@@ -1,7 +1,8 @@
 import { Button, HStack, Image, Text } from "@chakra-ui/react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Nav() {
+  const navigate = useNavigate();
   return (
     <HStack
       p={"4"}
@@ -28,9 +29,26 @@ function Nav() {
         </Link>
       </HStack>
       <HStack justify={"start"} align="start">
-        <Button bg={"blue.500"} color="whiteAlpha.800">
-          Log in{" "}
-        </Button>
+        {!localStorage.getItem("token") ? (
+          <Button
+            onClick={() => navigate("/login")}
+            bg={"blue.500"}
+            color="whiteAlpha.800"
+          >
+            Log in{" "}
+          </Button>
+        ) : (
+          <Button
+            onClick={() => {
+              localStorage.removeItem("token");
+              navigate("/login");
+            }}
+            bg={"red.400"}
+            color="white"
+          >
+            logout
+          </Button>
+        )}
       </HStack>
     </HStack>
   );
