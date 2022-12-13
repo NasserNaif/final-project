@@ -32,7 +32,7 @@ export const loginUser = async (req: Request, res: Response) => {
     );
 
     return res.status(201).json({
-      message: `welcome back ${user.name}`,
+      message: `welcome back ${user.username}`,
       token,
     });
   } catch (error) {

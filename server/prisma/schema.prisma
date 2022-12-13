@@ -1,65 +1,62 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
 generator client {
   provider = "prisma-client-js"
 }
+
 datasource db {
-  provider = "mysql"
-  url = env("DATABASE_URL")
+  provider     = "mysql"
+  url          = env("DATABASE_URL")
   relationMode = "prisma"
 }
 
-
 model User {
-  id String @id @default(uuid())
-  username String @unique
-  name String
-  email String @unique
-  phoneNumber String @unique
-  password String 
-  commercialRecord String @unique
-  role Role 
-  profile Profile?
-  project Project[]
-  request Requests[]
-}
-
-enum Role {
-  PROVIDER 
-  CLIENT 
+  id               String     @id @default(uuid())
+  username         String     @unique
+  name             String
+  email            String     @unique
+  phoneNumber      String     @unique
+  password         String
+  commercialRecord String     @unique
+  role             Role
+  profile          Profile?
+  project          Project[]
+  request          Requests[]
 }
 
 model Profile {
-  // id String @id @default(uuid())
-  user_id String @unique
-  userID User @relation(fields: [user_id],references: [id])
-  summary String
+  id       String  @id
+  user_id  String  @unique
+  summary  String
   attament String?
+  userID   User    @relation(fields: [user_id], references: [id])
 }
 
-
 model Project {
-  id String @id @default(uuid())
-  projectName String 
-  projectDiscription String 
-  projectDuration String
-  publishDate DateTime @default(now())
-  deadLine String 
-  isCompleted Boolean @default(false)
-  request Requests[]
-  user_id String 
-  userID User? @relation(fields: [user_id],references: [id])
+  id                 String     @id @default(uuid())
+  projectName        String
+  projectDiscription String
+  projectDuration    String
+  publishDate        DateTime   @default(now())
+  deadLine           String
+  isCompleted        Boolean    @default(false)
+  user_id            String
+  userID             User?      @relation(fields: [user_id], references: [id])
+  request            Requests[]
 }
 
 model Requests {
-  id String @id @default(uuid())
-  requestName String 
+  id                 String  @id @default(uuid())
+  requestName        String
   requestDiscription String
-  requestBudget Int
-  isAproved Boolean @default(false)
-  requestAttachment String?
-  project_id String
-  project Project @relation(fields: [project_id],references: [id])
-  user_id String
-  userID User @relation(fields: [user_id],references: [id])
+  requestBudget      Int
+  isAproved          Boolean @default(false)
+  requestAttachment  String?
+  project_id         String
+  user_id            String
+  project            Project @relation(fields: [project_id], references: [id])
+  userID             User    @relation(fields: [user_id], references: [id])
+}
+
+enum Role {
+  PROVIDER
+  CLIENT
 }
