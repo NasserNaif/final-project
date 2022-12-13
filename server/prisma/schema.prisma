@@ -19,7 +19,8 @@ model User {
   password String 
   commercialRecord String @unique
   role Role 
-
+  project Project[]
+  request Requests[]
 }
 
 enum Role {
@@ -36,16 +37,21 @@ model Project {
   projectDuration String
   publishDate DateTime @default(now())
   deadLine String 
-  request Request[]
-
+  isCompleted Boolean @default(false)
+  request Requests[]
+  user_id String 
+  userID User? @relation(fields: [user_id],references: [id])
 }
 
-model Request {
+model Requests {
   id String @id @default(uuid())
-  name String 
-  discription String
-  budget Int
-  attachment String?
+  requestName String 
+  requestDiscription String
+  requestBudget Int
+  isAproved Boolean @default(false)
+  requestAttachment String?
   project_id String
   project Project @relation(fields: [project_id],references: [id])
+  user_id String
+  userID User @relation(fields: [user_id],references: [id])
 }

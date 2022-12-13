@@ -4,7 +4,6 @@ import { logInType } from "../zodSchema/loginUserSchema";
 import * as argon2 from "argon2";
 import * as jwt from "jsonwebtoken";
 import { User } from "@prisma/client";
-import { any, date } from "zod";
 
 export const loginUser = async (req: Request, res: Response) => {
   try {
@@ -28,12 +27,12 @@ export const loginUser = async (req: Request, res: Response) => {
       });
     }
     const token = jwt.sign(
-      { id: user.id, username: user.username },
+      { id: user.id, username: user.username, role: user.role },
       process.env.JWT_KEY as string
     );
 
     return res.status(201).json({
-      message: `welcome back ${user.username}`,
+      message: `welcome back ${user.name}`,
       token,
     });
   } catch (error) {
@@ -55,7 +54,7 @@ export const registerUser = async (req: Request, res: Response) => {
     });
 
     return res.status(201).json({
-      message: "user added !",
+      message: "seccesfull register !",
     });
   } catch (error) {
     return res.status(500).json({

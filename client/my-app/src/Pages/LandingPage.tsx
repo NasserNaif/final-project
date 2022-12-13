@@ -6,7 +6,7 @@ function LandingPage() {
   const navigate = useNavigate();
 
   const getStart = () => {
-    navigate("/login");
+    navigate("/home");
   };
   return (
     <HStack bg="#E6E3E4" h={"77vh"} fontFamily="verdana">
