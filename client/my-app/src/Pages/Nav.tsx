@@ -7,7 +7,6 @@ function Nav() {
     <HStack
       p={"4"}
       h={"7h"}
-      bg={"#e6e3e4"}
       justify="space-between"
       align={"center"}
     >

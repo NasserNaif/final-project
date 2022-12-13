@@ -58,29 +58,29 @@ function LogInPage() {
     }
   };
   return (
-    <VStack bg="#E6E3E4" h={"100vh"} justify={"center"} align={"center"}>
+    <VStack  h={"50vh"} justify={"center"} align={"center"}>
       <VStack
         boxShadow={"2xl"}
         bg={useColorModeValue("#e6e3e4", "gray.900")}
         borderRadius={20}
         p={5}
       >
+        <Text fontSize='20px' as="b">Sign in to your account</Text>
         <HStack m={8}>
-          <Text fontSize={"1.3em"} fontWeight="700">
-            Username :{" "}
-          </Text>
+          
           <Input
+          placeholder="Username"
             bg={""}
             onChange={(e) => setUsername(e.target.value)}
             value={username}
             w={["30vw", "30vw", "20vw"]}
           />
         </HStack>
+        
         <HStack m={8}>
-          <Text fontSize={"1.3em"} fontWeight="700">
-            Password :{" "}
-          </Text>
+          
           <Input
+          placeholder="Password"
             bg={""}
             onChange={(e) => setPassword(e.target.value)}
             value={password}
@@ -95,6 +95,9 @@ function LogInPage() {
             w={"10em"}
             mt="10"
             onClick={logIn}
+            _hover={{
+              bg: "white",
+              textColor:"gray"}}
           >
             Sign in
           </Button>

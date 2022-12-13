@@ -4,6 +4,7 @@ import {
   HStack,
   Input,
   Button,
+  useColorModeValue,
   Radio,
   RadioGroup,
   useToast,
@@ -26,7 +27,7 @@ function RegisterPage() {
   const toast = useToast();
   const navigate = useNavigate();
 
-  const submit = async () => {
+  const Save = async () => {
     try {
       if (password !== confirmpassword) {
         toast({
@@ -84,7 +85,6 @@ function RegisterPage() {
     <VStack
       p={5}
       color={"black"}
-      bg={"#E6E3E4"}
       // h={"74vh"}
       justify={"center"}
       alignItems={"center"}
@@ -93,62 +93,66 @@ function RegisterPage() {
         align={"start"}
         // boxShadow={"2xl"}
         // bg={useColorModeValue("#e6e3e4", "gray.900")}
+        boxShadow={"2xl"}
+        bg={useColorModeValue("#e6e3e4", "white.900")}
+        borderRadius={20}
+        p={5}
       >
-        <Text>Username :</Text>
         <Input
+        placeholder="Username"
           bg={""}
           onChange={(e) => setUsername(e.target.value)}
           type="text"
           value={username}
-          w={["20vw", "35vw"]}
+          w={["20vw", "25vw"]}
         />
-        <Text>Company name :</Text>
         <Input
+        placeholder="Company name"
           bg={""}
           onChange={(e) => setName(e.target.value)}
           type="text"
           value={name}
-          w={["20vw", "35vw"]}
+          w={["20vw", "25vw"]}
         />
-        <Text>Commercial record :</Text>
         <Input
+        placeholder="Commercial record"
           onChange={(e) => setCommercialRecord(e.target.value)}
           bg={""}
           type="text"
           value={commercialRecord}
-          w={["20vw", "35vw"]}
+          w={["20vw", "25vw"]}
         />
-        <Text>Email :</Text>
         <Input
+        placeholder="Email"
           bg={""}
           onChange={(e) => setEmail(e.target.value)}
           type="email"
           value={email}
-          w={["20vw", "35vw"]}
+          w={["20vw", "25vw"]}
         />
-        <Text>Phone number :</Text>
         <Input
+        placeholder="Phone number"
           bg={""}
           onChange={(e) => setPhoneNumber(e.target.value)}
           type="text"
           value={phoneNumber}
-          w={["20vw", "35vw"]}
+          w={["20vw", "25vw"]}
         />
-        <Text>Password :</Text>
         <Input
+        placeholder="Password"
           bg={""}
           onChange={(e) => setPassword(e.target.value)}
           type="password"
           value={password}
-          w={["20vw", "35vw"]}
+          w={["20vw", "25vw"]}
         />
-        <Text>Confirm password :</Text>
         <Input
+        placeholder="Confirm password"
           bg={""}
           type="password"
           value={confirmpassword}
           onChange={(e) => setConfirmPassword(e.target.value)}
-          w={["20vw", "35vw"]}
+          w={["20vw", "25vw"]}
         />
 
         <RadioGroup
@@ -158,7 +162,7 @@ function RegisterPage() {
           justifyContent={"space-between"}
         >
           <HStack justify={"space-between"} w={"100%"}>
-            <Radio value="CLIENT">CLIENT</Radio>
+            <Radio value="CLIENT" >CLIENT</Radio>
             <Radio value="PROVIDER">PROVIDER</Radio>
           </HStack>
         </RadioGroup>
@@ -169,7 +173,7 @@ function RegisterPage() {
             bg={"#1A0202"}
             color="whiteAlpha.900"
             w={"10em"}
-            onClick={submit}
+            onClick={Save}
           >
             Register
           </Button>

@@ -7,10 +7,10 @@ import LandingPage from "./LandingPage";
 import LogInPage from "./LogInPage";
 import Nav from "./Nav";
 import RegisterPage from "./RegisterPage";
-import ProjectCards from "./ProjectCards";
+import ProjectCards from "../components/ProjectCards";
 import NewProject from "./NewProject";
 import RequstPage from "./RequstPage";
-import RequstCard from "./RequstCard";
+import RequstCard from "../components/RequstCard";
 
 
 function Router() {

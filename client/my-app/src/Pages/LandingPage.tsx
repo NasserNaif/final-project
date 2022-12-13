@@ -9,9 +9,9 @@ function LandingPage() {
     navigate("/home");
   };
   return (
-    <HStack bg="#E6E3E4" h={"77vh"} fontFamily="verdana">
+    <HStack >
       <VStack p={10} align="start">
-        <VStack align="start" m={"30px 0 "}>
+        <VStack align="start" >
           <Text fontSize={"2em"}>Munagsat</Text>
           <Text fontSize={["1.1em", "1.3em"]}>
             Provides multipale services to private sector companies, which aim
