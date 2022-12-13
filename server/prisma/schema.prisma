@@ -34,11 +34,12 @@ model Project {
   id                 String     @id @default(uuid())
   projectName        String
   projectDiscription String
-  projectDuration    String
+  projectNumber      String
   publishDate        DateTime   @default(now())
   deadLine           String
   isCompleted        Boolean    @default(false)
   user_id            String
+  companyName        String?
   userID             User?      @relation(fields: [user_id], references: [id])
   request            Requests[]
 }
