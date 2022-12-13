@@ -4,7 +4,7 @@ import ProjectCards from "../components/ProjectCards";
 
 function HomePage() {
   const [projectData, setProjectData]: any = useState([]);
-  const [users, setusers] = useState([]);
+  // const [users, setusers] = useState([]);
 
   const fetchData = async () => {
     const request = await fetch(`/api/v1/project`, {
@@ -16,19 +16,19 @@ function HomePage() {
     setProjectData(data);
   };
 
-  const fetchUser = async () => {
-    const request = await fetch(`/api/v1/project/user`, {
-      headers: {
-        Authorization: "Bearer " + localStorage.getItem("token"),
-      },
-    });
-    const data = await request.json();
-    setusers(data);
-  };
+  // const fetchUser = async () => {
+  //   const request = await fetch(`/api/v1/project/user`, {
+  //     headers: {
+  //       Authorization: "Bearer " + localStorage.getItem("token"),
+  //     },
+  //   });
+  //   const data = await request.json();
+  //   setusers(data);
+  // };
 
   useEffect(() => {
     fetchData();
-    fetchUser();
+    // fetchUser();
   }, []);
 
   // console.log(projectData);
