@@ -90,7 +90,7 @@ function LogInPage() {
         <HStack>
           <Button
             borderRadius={20}
-            bg={"#1A0202"}
+            bg={"#233142"}
             color="whiteAlpha.900"
             w={"10em"}
             mt="10"
