@@ -61,20 +61,20 @@ export default function Cards(props: any) {
               <Text>{props.projectNumber}</Text>
             </HStack>
 
-            <HStack>
+            {/* <HStack>
               <Text textAlign={"left"} fontWeight={700}>
                 Company name:
               </Text>
-              <Text>{props.companyName}</Text>
-            </HStack>
+              <Text>{pr}</Text>
+            </HStack> */}
 
             <HStack>
               <Text fontWeight={700}>Deadline for submitting offers: </Text>
-              <Text>2024-02-12</Text>
+              <Text>{props.dsubmit}</Text>
             </HStack>
             <HStack>
               <Text fontWeight={700}>date and time of opening offers: </Text>
-              <Text>2022-04-25</Text>
+              <Text>{props.dOpen}</Text>
             </HStack>
 
             <HStack align={"start"}>

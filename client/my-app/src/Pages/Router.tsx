@@ -7,7 +7,6 @@ import LandingPage from "./LandingPage";
 import LogInPage from "./LogInPage";
 import Nav from "./Nav";
 import RegisterPage from "./RegisterPage";
-import ProjectCards from "../components/ProjectCards";
 import NewProject from "./NewProject";
 import RequstPage from "./RequstPage";
 import RequstCard from "../components/RequstCard";
@@ -20,13 +19,12 @@ function Router() {
         <Route path="/" element={<LandingPage />} />
         <Route element={<ProtectRoute />}>
           <Route path="/home" element={<HomePage />} />
+          <Route path="/login" element={<LogInPage />} />
+          <Route path="/register" element={<RegisterPage />} />
+          <Route path="/newproject" element={<NewProject />} />
+          <Route path="/req" element={<RequstPage />} />
+          <Route path="/reqcard" element={<RequstCard />} />
         </Route>
-        <Route path="/login" element={<LogInPage />} />
-        <Route path="/register" element={<RegisterPage />} />
-        <Route path="/procards" element={<ProjectCards />} />
-        <Route path="/newpro" element={<NewProject />} />
-        <Route path="/req" element={<RequstPage />} />
-        <Route path="/reqcard" element={<RequstCard />} />
       </Routes>
       <Footer />
     </>

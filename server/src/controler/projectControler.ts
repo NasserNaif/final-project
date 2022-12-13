@@ -88,7 +88,7 @@ export const postProject = async (req: Request, res: Response) => {
         user_id: user.id,
         projectName: newProject.projectName,
         projectDiscription: newProject.projectDiscription,
-        projectNumber: newProject.projectNumber,
+        deadLineOpningOffer: newProject.deadLineOpningOffer,
         deadLine: newProject.deadLine,
       },
     });

@@ -28,20 +28,9 @@ function HomePage() {
 
   useEffect(() => {
     fetchData();
-    // fetchUser();
   }, []);
 
-  // console.log(projectData);
 
-  // const newData = setProjectData((proj: any) => {
-  //   users.find((fin: any) => {
-  //     if (fin.id === proj.user_id) {
-  //       return fin.name;
-  //     }
-  //   });
-  // });
-
-  // console.log(newData);
   return (
     <Grid
       p="0 0 20vh 0px"
@@ -53,7 +42,9 @@ function HomePage() {
           key={elm.id}
           projectname={elm.projectName}
           projectNumber={elm.projectNumber}
-          companyName={""}
+          // companyName={""}
+          dsubmit={elm.deadLine}
+          dOpen={elm.deadLineOpningOffer}
           description={elm.projectDiscription}
         />
       ))}

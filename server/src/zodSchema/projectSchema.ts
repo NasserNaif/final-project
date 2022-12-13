@@ -12,9 +12,8 @@ export const postProjectSchema = z.object({
       required_error: "project Discription is required !",
       invalid_type_error: "project Discription must be string !",
     }),
-    projectNumber: z.string({
+    deadLineOpningOffer: z.string({
       required_error: "project number is required !",
-      invalid_type_error: "project number must be string !",
     }),
     deadLine: z.optional(z.string()),
   }),
