@@ -1,18 +1,18 @@
 import express from "express";
 import {
-  getAllClient,
   getAllProject,
+  getProjectsRequest,
   postProject,
-} from "../controler/clientControler";
+} from "../controler/projectControler";
 import { authorize, protect } from "../middleware/auth";
 import { validate } from "../middleware/validate";
 import { postProjectSchema } from "../zodSchema/projectSchema";
 
-const clientRouter = express.Router();
+const projectRouter = express.Router();
 
-clientRouter.get(`/client`, getAllClient);
-clientRouter.get(`/`, protect, authorize("CLIENT"), getAllProject);
-clientRouter.post(
+projectRouter.get(`/`, getAllProject);
+projectRouter.get(`/:id`, protect, authorize("CLIENT"), getProjectsRequest);
+projectRouter.post(
   `/`,
   protect,
   authorize("CLIENT"),
@@ -20,4 +20,4 @@ clientRouter.post(
   postProject
 );
 
-export default clientRouter;
+export default projectRouter;

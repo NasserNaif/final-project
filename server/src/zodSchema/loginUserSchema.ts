@@ -21,6 +21,11 @@ export const registerUserSchema = z.object({
         invalid_type_error: "username must be string ",
       })
       .min(3, `username must be mure than 3 chars`),
+
+    name: z.string({
+      required_error: "name is required !",
+      invalid_type_error: "name must be string ",
+    }),
     password: z
       .string({
         required_error: "password is required !",
@@ -42,6 +47,10 @@ export const registerUserSchema = z.object({
       .min(10, `phine number must be equal 10 number`)
       .max(10, `phine number must be equal 10 number`),
 
-      role:z.enum(["CLIENT" , "PROVIDER"])
+    role: z.enum(["CLIENT", "PROVIDER"]),
+    commercialRecord: z.string({
+      required_error: "commercial Record is required !",
+      invalid_type_error: "commercial Record must be number ",
+    }),
   }),
 });

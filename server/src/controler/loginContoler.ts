@@ -4,7 +4,6 @@ import { logInType } from "../zodSchema/loginUserSchema";
 import * as argon2 from "argon2";
 import * as jwt from "jsonwebtoken";
 import { User } from "@prisma/client";
-import { any, date } from "zod";
 
 export const loginUser = async (req: Request, res: Response) => {
   try {
@@ -28,12 +27,12 @@ export const loginUser = async (req: Request, res: Response) => {
       });
     }
     const token = jwt.sign(
-      { id: user.id, username: user.username },
+      { id: user.id, username: user.username, role: user.role },
       process.env.JWT_KEY as string
     );
 
     return res.status(201).json({
-      message: `welcome back ${user.username}`,
+      message: `welcome back ${user.name}`,
       token,
     });
   } catch (error) {
@@ -47,7 +46,6 @@ export const registerUser = async (req: Request, res: Response) => {
   try {
     const newUser = req.body as User;
     const hashPassword = await argon2.hash(newUser.password);
-    // const user_id = newUser.id;
 
     newUser.password = hashPassword;
 
@@ -55,43 +53,9 @@ export const registerUser = async (req: Request, res: Response) => {
       data: newUser,
     });
 
-  //  const updateClient =  await prisma.user.update({
-  //     where:{role:"CLIENT"},
-  //     data:{clientID:}
-  //   })
-
-    if (newUser.role == "CLIENT") {
-      const newClient = await prisma.user.findFirst({
-        where: { id: newUser.id },
-      });
-
-      if (!newClient) {
-        return res.status(400).json({
-          message: "error in user ",
-        });
-      }
-
-      await prisma.client.create({ data: { user_id: newClient.id } });
-
-      return res.status(201).json({
-        message: "client added !",
-      });
-    } 
-    if (newUser.role == "PROVIDER") {
-      const newProvider = await prisma.user.findFirst({
-        where: { id: newUser.id },
-      });
-
-      if (!newProvider) {
-        return;
-      }
-
-      await prisma.provider.create({ data: { user_id: newProvider.id } });
-
-      return res.status(201).json({
-        message: "Provider added !",
-      });
-    }
+    return res.status(201).json({
+      message: "seccesfull register !",
+    });
   } catch (error) {
     return res.status(500).json({
       message: "server error??",

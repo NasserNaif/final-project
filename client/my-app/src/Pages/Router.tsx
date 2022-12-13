@@ -1,5 +1,6 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
+import ProtectRoute from "../components/ProtectRoute";
 import Footer from "./Footer";
 import HomePage from "./HomePage";
 import LandingPage from "./LandingPage";
@@ -18,8 +19,9 @@ function Router() {
       <Nav />
       <Routes>
         <Route path="/" element={<LandingPage />} />
-
-        <Route path="/home" element={<HomePage />} />
+        <Route element={<ProtectRoute />}>
+          <Route path="/home" element={<HomePage />} />
+        </Route>
         <Route path="/login" element={<LogInPage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/procards" element={<ProjectCards />} />
