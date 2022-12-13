@@ -12,10 +12,12 @@ export const requestSchema = z.object({
       required_error: "request Disc is required !",
       invalid_type_error: "invalid type in Disc",
     }),
-    requestBudget: z.number({
-      required_error: "request budget is required !",
-      invalid_type_error: "invalid type in budget",
-    }),
+    requestBudget: z.optional(
+      z.number({
+        required_error: "request budget is required !",
+        invalid_type_error: "invalid type in budget",
+      })
+    ),
     requestAttachment: z.optional(z.string()),
   }),
 });

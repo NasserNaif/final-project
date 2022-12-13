@@ -1,26 +1,21 @@
 import { Request, Response } from "express";
 
 import { prisma } from "../config/DB";
+import { Requests } from "@prisma/client";
 
-export const getAllRequest = async (req: Request, res: Response) => {
+export const postNewRequest = async (req: Request, res: Response) => {
   try {
-    const getAllReques = await prisma.request.findMany();
-    return res.status(200).json(getAllReques);
+    const newRequest = req.body as Requests;
+    await prisma.requests.create({
+      data: newRequest,
+    });
+
+    return res.status(201).json({
+      message: "request sent seccesfully  !",
+    });
   } catch (error) {
     return res.status(500).json({
       message: "server error !",
     });
   }
 };
-
-
-export const postNewRequest =  async (req: Request, res: Response) => {
-    try {
-        // const newRequest = req.body as Req
-      
-    } catch (error) {
-      return res.status(500).json({
-        message: "server error !",
-      });
-    }
-  };

@@ -2,11 +2,36 @@ import { Project } from "@prisma/client";
 import { Request, Response } from "express";
 import { prisma } from "../config/DB";
 import { IUser } from "../middleware/auth";
+import { projectParamsType } from "../zodSchema/projectSchema";
 
 export const getAllProject = async (req: Request, res: Response) => {
   try {
     const allProject = await prisma.project.findMany();
     return res.status(200).json(allProject);
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({
+      message: "server error !",
+    });
+  }
+};
+
+export const getProjectsRequest = async (req: Request, res: Response) => {
+  try {
+    const { projectID } = req.params as projectParamsType;
+    const user = res.locals.user;
+
+    const findProject = await prisma.project.findMany({
+      where: { id: projectID, user_id: user.id },
+      select: { request: true },
+    });
+
+    if (!findProject) {
+      return res.status(400).json({
+        message: "sorry this project doesn't exist !",
+      });
+    }
+    return res.status(200).json(findProject);
   } catch (error) {
     console.log(error);
     return res.status(500).json({
