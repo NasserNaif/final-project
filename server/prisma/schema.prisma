@@ -19,6 +19,7 @@ model User {
   password String 
   commercialRecord String @unique
   role Role 
+  profile Profile?
   project Project[]
   request Requests[]
 }
@@ -28,6 +29,13 @@ enum Role {
   CLIENT 
 }
 
+model Profile {
+  // id String @id @default(uuid())
+  user_id String @unique
+  userID User @relation(fields: [user_id],references: [id])
+  summary String
+  attament String?
+}
 
 
 model Project {

@@ -1,8 +1,12 @@
-import { HStack, Image, Text, VStack } from "@chakra-ui/react";
+import { Box, HStack, Image, Text, VStack } from "@chakra-ui/react";
 import React from "react";
 
 function Footer() {
   return (
+    <Box position={"fixed"}
+    minW={"100vw"}
+    bottom={0}
+    >
     <HStack
     
     p={"1vw"}
@@ -28,6 +32,8 @@ function Footer() {
       </VStack>
       <Image w={"7em"} src="image/Vision.png" />
     </HStack>
+
+    </Box>
   );
 }
 

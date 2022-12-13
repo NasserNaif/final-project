@@ -58,7 +58,7 @@ function LogInPage() {
     }
   };
   return (
-    <VStack bg="#E6E3E4" h={"74vh"} justify={"center"} align={"center"}>
+    <VStack bg="#E6E3E4" h={"100vh"} justify={"center"} align={"center"}>
       <VStack
         boxShadow={"2xl"}
         bg={useColorModeValue("#e6e3e4", "gray.900")}
