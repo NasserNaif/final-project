@@ -54,3 +54,10 @@ export const registerUserSchema = z.object({
     }),
   }),
 });
+
+export const profileSchema = z.object({
+  body: z.object({
+    summary: z.string({ required_error: "summary is required !" }),
+    attament: z.optional(z.any()),
+  }),
+});
