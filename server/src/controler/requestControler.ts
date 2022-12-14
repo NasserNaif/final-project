@@ -9,6 +9,7 @@ export const postNewRequest = async (req: Request, res: Response) => {
   try {
     const { requestBudget, requestDiscription, requestName, project_id } =
       req.body as Requests;
+    console.log(req.body);
     const user = res.locals.user as IUser;
 
     await prisma.requests.create({
@@ -25,6 +26,7 @@ export const postNewRequest = async (req: Request, res: Response) => {
       message: "request sent seccesfully  !",
     });
   } catch (error) {
+    console.log(error);
     return res.status(500).json({
       message: "server error !???",
     });
