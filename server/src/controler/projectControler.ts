@@ -89,6 +89,7 @@ export const postProject = async (req: Request, res: Response) => {
         projectName: newProject.projectName,
         projectDiscription: newProject.projectDiscription,
         deadLineOpningOffer: newProject.deadLineOpningOffer,
+
         deadLine: newProject.deadLine,
       },
     });
