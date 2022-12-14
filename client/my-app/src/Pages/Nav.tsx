@@ -31,7 +31,7 @@ function Nav() {
         {!localStorage.getItem("token") ? (
           <Button
             onClick={() => navigate("/login")}
-            bg={"blue.500"}
+            bg={"#233142"}
             color="whiteAlpha.800"
           >
             Log in{" "}
@@ -42,7 +42,7 @@ function Nav() {
               localStorage.removeItem("token");
               navigate("/login");
             }}
-            bg={"red.400"}
+            bg={"#233142"}
             color="white"
           >
             logout

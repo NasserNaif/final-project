@@ -23,7 +23,11 @@ model User {
 }
 
 model Profile {
+<<<<<<< HEAD
   id       String  @id
+=======
+  id       String  @id @default(uuid())
+>>>>>>> master
   user_id  String  @unique
   summary  String
   attament String?
@@ -31,6 +35,7 @@ model Profile {
 }
 
 model Project {
+<<<<<<< HEAD
   id                 String     @id @default(uuid())
   projectName        String
   projectDiscription String
@@ -42,6 +47,18 @@ model Project {
   companyName        String?
   userID             User?      @relation(fields: [user_id], references: [id])
   request            Requests[]
+=======
+  id                  String     @id @default(uuid())
+  projectName         String
+  projectDiscription  String
+  deadLine            String
+  deadLineOpningOffer String
+  isCompleted         Boolean    @default(false)
+  companyName         String?
+  user_id             String
+  userID              User?      @relation(fields: [user_id], references: [id])
+  request             Requests[]
+>>>>>>> master
 }
 
 model Requests {
