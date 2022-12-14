@@ -19,12 +19,12 @@ function Router() {
         <Route path="/" element={<LandingPage />} />
         <Route element={<ProtectRoute />}>
           <Route path="/home" element={<HomePage />} />
-          <Route path="/login" element={<LogInPage />} />
-          <Route path="/register" element={<RegisterPage />} />
           <Route path="/newproject" element={<NewProject />} />
-          <Route path="/req" element={<RequstPage />} />
+          <Route path="/postrequset/:projectid" element={<RequstPage />} />
           <Route path="/reqcard" element={<RequstCard />} />
         </Route>
+        <Route path="/register" element={<RegisterPage />} />
+        <Route path="/login" element={<LogInPage />} />
       </Routes>
       <Footer />
     </>

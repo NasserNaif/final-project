@@ -1,18 +1,79 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import {
   Box,
   Center,
-  Text,
   Flex,
   Heading,
   Button,
+  Input,
   VStack,
   Textarea,
   HStack,
+  useToast,
 } from "@chakra-ui/react";
+import { useNavigate, useParams } from "react-router-dom";
 
-export default function form() {
+export default function RequestPage() {
+  interface IUser {
+    id: string;
+    username: string;
+    role: string;
+  }
+  const [requestName, settName] = useState("");
+  const [requestDiscription, setDiscription] = useState("");
+  const [requestBudget, setBudget] = useState(0);
+
+  const navigate = useNavigate();
+
+  const { id } = useParams();
+  const toast = useToast();
+
+  const submmitRequest = async () => {
+    try {
+      const request = await fetch(`http://localhost:5008/api/v1/request`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + localStorage.getItem("token"),
+        },
+        body: JSON.stringify({
+          requestName: requestName,
+          requestDiscription: requestDiscription,
+          requestBudget: requestBudget,
+          project_id: id,
+        }),
+      });
+
+      const data = await request.json();
+
+      if (request.status !== 201) {
+        toast({
+          title: data.message,
+          status: "error",
+          duration: 3000,
+          position: "top-left",
+        });
+        return;
+      }
+      toast({
+        title: data.message,
+        status: "success",
+        duration: 3000,
+        position: "top",
+      });
+
+      navigate("/home");
+    } catch {
+      toast({
+        title: "server error !",
+        duration: 3000,
+        position: "top",
+        status: "error",
+      });
+    }
+  };
+
   return (
     <Center py="10px" mt="20px">
       <Box
@@ -35,16 +96,29 @@ export default function form() {
           </Heading>
         </VStack>
         <VStack align={"start"} p={3}>
+          <Input
+            placeholder={"Subject"}
+            value={requestName}
+            onChange={(e) => settName(e.target.value)}
+            bg={"#fff"}
+            w={"60%"}
+          ></Input>
+          <Input
+            placeholder={"Budget"}
+            value={requestBudget}
+            onChange={(e) => setBudget(Number(e.target.value))}
+            bg={"#fff"}
+            w={"60%"}
+          ></Input>
           <Textarea
             placeholder={"description"}
             bg={"#fff"}
             w={"80%"}
+            value={requestDiscription}
+            onChange={(e) => setDiscription(e.target.value)}
           ></Textarea>
-          <HStack p={4} border={"dashed"} borderColor={"gray.500"}>
-            <Button bg={"#fff"} border={"1px"} h={"50%"}>
-              Choose File
-            </Button>
-            <Text>No file chosen</Text>
+          <HStack p={4}>
+            <Input type={"file"}></Input>
           </HStack>
         </VStack>
 
@@ -58,6 +132,7 @@ export default function form() {
             _hover={{
               bg: "gray.500",
             }}
+            onClick={submmitRequest}
           >
             Submit
           </Button>
