@@ -1,4 +1,3 @@
-import React from "react";
 
 import {
   Box,
@@ -11,13 +10,8 @@ import {
   Button,
   HStack,
 } from "@chakra-ui/react";
-import { useNavigate } from "react-router-dom";
 
 export default function Cards(props: any) {
-  const navigate = useNavigate();
-  const apply = (id: any) => {
-    navigate(`/postrequset/${id}`);
-  };
   return (
     <Center py="10px" mt="20px">
       <Box>
@@ -59,12 +53,12 @@ export default function Cards(props: any) {
               </Text>
               <Text>{props.projectname}</Text>
             </HStack>
-            {/* <HStack align={"start"}>
+            <HStack align={"start"}>
               <Text className="textDesc" fontWeight={700}>
-                Project ID:{" "}
+                Company Name :{" "}
               </Text>
-              <Text>{props.projectNumber}</Text>
-            </HStack> */}
+              <Text>{props.compname}</Text>
+            </HStack>
 
             <HStack>
               <Text fontWeight={700}>Deadline for submitting offers: </Text>
@@ -91,9 +85,9 @@ export default function Cards(props: any) {
             _hover={{
               bg: "gray.500",
             }}
-            onClick={() => apply(props.id)}
+            onClick={props.onClick}
           >
-            Apply
+            {props.butten}
           </Button>
         </Flex>
       </Box>
