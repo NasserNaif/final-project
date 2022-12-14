@@ -6,7 +6,11 @@ import {
   useColorModeValue,
   useToast,
   VStack,
+  InputGroup,
+  InputLeftElement,
 } from "@chakra-ui/react";
+import {LockIcon} from '@chakra-ui/icons'
+
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -69,12 +73,19 @@ function LogInPage() {
           <Text fontSize={"1.3em"} fontWeight="700">
             Username :{" "}
           </Text>
+          <InputGroup>
+          <InputLeftElement
+      pointerEvents='none'
+      children={<LockIcon color='gray.300' />}
+    />
           <Input
             bg={""}
+            
             onChange={(e) => setUsername(e.target.value)}
             value={username}
             w={["30vw", "30vw", "20vw"]}
           />
+          </InputGroup>
         </HStack>
         <HStack m={8}>
           <Text fontSize={"1.3em"} fontWeight="700">

@@ -11,6 +11,10 @@ import ProjectCards from "./ProjectCards";
 import NewProject from "./NewProject";
 import RequstPage from "./RequstPage";
 import RequstCard from "./RequstCard";
+import Profile from "../components/Profile"
+
+
+
 
 
 function Router() {
@@ -28,6 +32,7 @@ function Router() {
         <Route path="/newpro" element={<NewProject />} />
         <Route path="/req" element={<RequstPage />} />
         <Route path="/reqcard" element={<RequstCard />} />
+        <Route path="/profile" element={<Profile />} />
 
 
       </Routes>

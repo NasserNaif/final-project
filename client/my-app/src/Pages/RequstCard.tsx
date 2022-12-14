@@ -1,4 +1,4 @@
-import React from "react";
+
 
 import {
   Box,
@@ -10,12 +10,13 @@ import {
   HStack,
 } from "@chakra-ui/react";
 import { DownloadIcon } from "@chakra-ui/icons";
+import React, { useEffect, useState } from "react";
 
-export default function form() {
+export default function RequstCard(props: any) {
   
-
-
+ 
   return (
+   
     <Center py="10px" mt="20px">
         
       <Box
@@ -32,15 +33,14 @@ export default function form() {
             fontWeight={300}
             fontSize={{ base: '2xl', sm: '4xl', md: '4xl' }}
             lineHeight={'110%'} color={'#120f2d'}>Company Name</Heading>
-    </VStack>
-    <VStack align={'start'}>
+    </VStack >
+    <VStack align={'start'} pt={5}>
+           <Text fontWeight={700}>{props.requestName}</Text>
+           <Text fontWeight={600}>{props.requestBudget}</Text>
         <HStack align={'start'} mt={6} p={3} border={'1px'} w={'100%'} borderColor={'#000'}
         rounded={'2xl'}
         >
-           
-            <Text>has description has description has description has description 
-            has description has description has description has description
-            has description has description has description has description
+            <Text>{props.requestDiscription}
             </Text>
         </HStack>
        <Text></Text>
@@ -69,5 +69,6 @@ export default function form() {
 
       
     </Center>
+        
   );
 }

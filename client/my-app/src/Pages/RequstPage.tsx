@@ -12,12 +12,21 @@ import {
   Textarea,
   HStack
 } from "@chakra-ui/react";
+import { AddIcon } from "@chakra-ui/icons";
 
 export default function form() {
   
 
 
   return (
+    <>
+    <Button leftIcon={<AddIcon/>}
+     bg={'#000'}
+      color={'#fff'} 
+      borderRadius={'3xl'}
+      mt={5}
+      ml={10}
+      > New project</Button>
     <Center py="10px" mt="20px">
         
       <Box
@@ -37,11 +46,12 @@ export default function form() {
     </VStack>
         <VStack align={'start'} p={3}>
         
-            
+            <Input placeholder={'Subject'} bg={'#fff'} w={'60%'}></Input>
+            <Input placeholder={'Budget'} bg={'#fff'} w={'60%'}></Input>
             <Textarea placeholder={'description'} bg={'#fff'} w={'80%'} ></Textarea>
-            <HStack p={4} border={'dashed'} borderColor={"gray.500"}>
-            <Button bg={'#fff'} border={'1px'} h={'50%'}>Choose File</Button>
-            <Text>No file chosen</Text>
+            <HStack p={4} >
+                <Input type={'file'}></Input>
+           
                 </HStack>
         </VStack>
 
@@ -64,5 +74,6 @@ export default function form() {
 
       
     </Center>
+    </>
   );
 }
