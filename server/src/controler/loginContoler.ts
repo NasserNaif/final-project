@@ -3,7 +3,8 @@ import { prisma } from "../config/DB";
 import { logInType } from "../zodSchema/loginUserSchema";
 import * as argon2 from "argon2";
 import * as jwt from "jsonwebtoken";
-import { User } from "@prisma/client";
+import { Profile, User } from "@prisma/client";
+import { IUser } from "../middleware/auth";
 
 export const loginUser = async (req: Request, res: Response) => {
   try {
@@ -32,7 +33,7 @@ export const loginUser = async (req: Request, res: Response) => {
     );
 
     return res.status(201).json({
-      message: `welcome back ${user.username}`,
+      message: `welcome back ${user.name}`,
       token,
     });
   } catch (error) {
@@ -55,6 +56,29 @@ export const registerUser = async (req: Request, res: Response) => {
 
     return res.status(201).json({
       message: "seccesfull register !",
+    });
+  } catch (error) {
+    return res.status(500).json({
+      message: "server error??",
+    });
+  }
+};
+
+export const newProfile = async (req: Request, res: Response) => {
+  try {
+    const newProfile = req.body as Profile;
+    const { id } = res.locals.user as IUser;
+
+    await prisma.profile.create({
+      data: {
+        user_id: id,
+        summary: newProfile.summary,
+        // attament: newProfile.attament,
+      },
+    });
+
+    return res.status(201).json({
+      message: "profile updated !",
     });
   } catch (error) {
     return res.status(500).json({

@@ -12,9 +12,9 @@ export const postProjectSchema = z.object({
       required_error: "project Discription is required !",
       invalid_type_error: "project Discription must be string !",
     }),
-    projectDuration: z.string({
-      required_error: "project Duration is required !",
-      invalid_type_error: "project Duration must be string !",
+    projectNumber: z.string({
+      required_error: "project number is required !",
+      invalid_type_error: "project number must be string !",
     }),
     deadLine: z.optional(z.string()),
   }),
@@ -31,3 +31,13 @@ export const getProjectRequestSchema = z.object({
 export type projectParamsType = z.infer<
   typeof getProjectRequestSchema
 >["params"];
+
+export const getProfileParams = z.object({
+  params: z.object({
+    user_id: z.string({
+      required_error: "you must send project id ",
+      invalid_type_error: "project id must be string ",
+    }),
+  }),
+});
+export type paramProfile = z.infer<typeof getProfileParams>["params"];

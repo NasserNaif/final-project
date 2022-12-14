@@ -19,11 +19,12 @@ model User {
   role             Role
   profile          Profile?
   project          Project[]
+
   request          Requests[]
 }
 
 model Profile {
-  id       String  @id
+  id       String  @id @default(uuid())
   user_id  String  @unique
   summary  String
   attament String?
@@ -38,8 +39,8 @@ model Project {
   publishDate        DateTime   @default(now())
   deadLine           String
   isCompleted        Boolean    @default(false)
+  companyName String?
   user_id            String
-  companyName        String?
   userID             User?      @relation(fields: [user_id], references: [id])
   request            Requests[]
 }
