@@ -29,8 +29,7 @@ export default function RequestPage() {
   const { projectid } = useParams();
   const toast = useToast();
 
-
-  console.log(projectid)
+  console.log(projectid);
   const submmitRequest = async () => {
     try {
       const request = await fetch(`/api/v1/request`, {

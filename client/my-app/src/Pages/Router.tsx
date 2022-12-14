@@ -10,6 +10,8 @@ import RegisterPage from "./RegisterPage";
 import NewProject from "./NewProject";
 import RequstPage from "./RequstPage";
 import RequstCard from "../components/RequstCard";
+import MyProjects from "./MyProjects";
+import RequestsOfProject from "./RequestsOfProject";
 
 function Router() {
   return (
@@ -22,6 +24,8 @@ function Router() {
           <Route path="/newproject" element={<NewProject />} />
           <Route path="/postrequset/:projectid" element={<RequstPage />} />
           <Route path="/reqcard" element={<RequstCard />} />
+          <Route path="/myproject" element={<MyProjects />} />
+          <Route path="/requestofproject/:id" element={<RequestsOfProject />} />
         </Route>
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LogInPage />} />

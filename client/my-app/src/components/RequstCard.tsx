@@ -1,5 +1,3 @@
-import React from "react";
-
 import {
   Box,
   Center,
@@ -10,8 +8,9 @@ import {
   HStack,
 } from "@chakra-ui/react";
 import { DownloadIcon } from "@chakra-ui/icons";
+import React, { useEffect, useState } from "react";
 
-export default function form() {
+export default function RequstCard(props: any) {
   return (
     <Center py="10px" mt="20px">
       <Box
@@ -33,20 +32,21 @@ export default function form() {
             Company Name
           </Heading>
         </VStack>
-        <VStack align={"start"}>
-          <HStack
-            align={"start"}
-            mt={6}
-            p={3}
-            border={"1px"}
-            w={"100%"}
-            borderColor={"#000"}
-            rounded={"2xl"}
-          >
-            <Text>
-              has description has description has description has description
-              has description has description has description has description
-              has description has description has description has description
+        <VStack align={"start"} pt={5}>
+          <HStack>
+            <Text> subject :</Text>
+            <Text fontWeight={700}>{props.requestName}</Text>
+          </HStack>
+
+          <HStack>
+            <Text>Budget : </Text>
+            <Text fontWeight={600}>{props.requestBudget}</Text>
+          </HStack>
+          <HStack align={"start"}>
+            <Text>Discription:</Text>
+            <Text w={"40%"}>
+              oirehgeriovklfbjnkdfbdjoedhbsvfnkckvfbnjsvkfnjkscvfnjvn dkvn
+              dkskmnjbflkvjdhfoiheroifgeorifjerpifjeroifslfksdflsdkfsdlkfsdlfkhsdflksdflsdkhfsdlkfhsdlfksdhflsdkhfhslksdfsdlkoijtgoritjgoritjgertiogjeroijdddkdflkdfgldfkjgdflkgjdflgkjdfglkdfjglkdfjgdflkg
             </Text>
           </HStack>
           <Text></Text>

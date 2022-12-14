@@ -21,8 +21,8 @@ function Nav() {
           <Text fontSize={"1.4em"}>Home</Text>
         </Link>
 
-        <Link to={"/"}>
-          <Text fontSize={"1.4em"}>project</Text>
+        <Link to={"/myproject"}>
+          <Text fontSize={"1.4em"}>my projects</Text>
         </Link>
         <Link to={"/"}>
           <Text fontSize={"1.4em"}>About</Text>
