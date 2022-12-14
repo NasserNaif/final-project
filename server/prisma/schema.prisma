@@ -23,11 +23,7 @@ model User {
 }
 
 model Profile {
-<<<<<<< HEAD
-  id       String  @id
-=======
   id       String  @id @default(uuid())
->>>>>>> ee20101f34e9253824ab60927afbdfdc8a10b9aa
   user_id  String  @unique
   summary  String
   attament String?
@@ -35,19 +31,6 @@ model Profile {
 }
 
 model Project {
-<<<<<<< HEAD
-  id                 String     @id @default(uuid())
-  projectName        String
-  projectDiscription String
-  projectNumber      String
-  publishDate        DateTime   @default(now())
-  deadLine           String
-  isCompleted        Boolean    @default(false)
-  user_id            String
-  companyName        String?
-  userID             User?      @relation(fields: [user_id], references: [id])
-  request            Requests[]
-=======
   id                  String     @id @default(uuid())
   projectName         String
   projectDiscription  String
@@ -58,7 +41,6 @@ model Project {
   user_id             String
   userID              User?      @relation(fields: [user_id], references: [id])
   request             Requests[]
->>>>>>> ee20101f34e9253824ab60927afbdfdc8a10b9aa
 }
 
 model Requests {
