@@ -30,12 +30,14 @@ export default function RequestPage() {
 
   const navigate = useNavigate();
 
-  const { id } = useParams();
+  const { projectid } = useParams();
   const toast = useToast();
 
+
+  console.log(projectid)
   const submmitRequest = async () => {
     try {
-      const request = await fetch(`http://localhost:5008/api/v1/request`, {
+      const request = await fetch(`/api/v1/request`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -45,9 +47,11 @@ export default function RequestPage() {
           requestName: requestName,
           requestDiscription: requestDiscription,
           requestBudget: requestBudget,
-          project_id: id,
+          project_id: projectid,
         }),
       });
+
+      console.log("hjhbhj", request);
 
       const data = await request.json();
 
