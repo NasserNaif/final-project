@@ -3,6 +3,7 @@ import React from "react";
 
 function Footer() {
   return (
+<<<<<<< HEAD
     <Box position={"fixed"}
     minW={"100vw"}
     height={"12vh"}
@@ -12,6 +13,14 @@ function Footer() {
     
     p={"1vw"}
       h="12vh"
+=======
+    <HStack
+      position={"fixed"}
+      minW={"100vw"}
+      bottom={0}
+      p={"1vw"}
+      bg={"#E6E3E4"}
+>>>>>>> master
       justify="space-between"
       borderTop={"1px solid black"}
     >
@@ -34,8 +43,6 @@ function Footer() {
       </VStack>
       <Image w={"5em"} src="image/Vision.png" />
     </HStack>
-
-    </Box>
   );
 }
 

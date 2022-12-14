@@ -32,17 +32,16 @@ model Profile {
 }
 
 model Project {
-  id                 String     @id @default(uuid())
-  projectName        String
-  projectDiscription String
-  projectNumber      String
-  publishDate        DateTime   @default(now())
-  deadLine           String
-  isCompleted        Boolean    @default(false)
-  companyName String?
-  user_id            String
-  userID             User?      @relation(fields: [user_id], references: [id])
-  request            Requests[]
+  id                  String     @id @default(uuid())
+  projectName         String
+  projectDiscription  String
+  deadLine            String
+  deadLineOpningOffer String
+  isCompleted         Boolean    @default(false)
+  companyName         String?
+  user_id             String
+  userID              User?      @relation(fields: [user_id], references: [id])
+  request             Requests[]
 }
 
 model Requests {
