@@ -83,11 +83,14 @@ function RegisterPage() {
   };
   return (
     <VStack
+    mt={"0%"}
+    marginBottom="10%"
       p={5}
       color={"black"}
       // h={"74vh"}
       justify={"center"}
       alignItems={"center"}
+      
     >
       <VStack
         align={"start"}
@@ -160,8 +163,9 @@ function RegisterPage() {
           onChange={setRole}
           value={role}
           justifyContent={"space-between"}
+          bg="gray"
         >
-          <HStack justify={"space-between"} w={"100%"}>
+          <HStack justify={"space-between"} w={"50%"} >
             <Radio value="CLIENT" >CLIENT</Radio>
             <Radio value="PROVIDER">PROVIDER</Radio>
           </HStack>
@@ -169,11 +173,15 @@ function RegisterPage() {
 
         <HStack w="100%" justify={"center"} p={2}>
           <Button
-            borderRadius={20}
+             borderRadius={20}
             bg={"#1A0202"}
             color="whiteAlpha.900"
             w={"10em"}
+            mt="10"
             onClick={Save}
+            _hover={{
+              bg: "white",
+              textColor:"gray"}}
           >
             Register
           </Button>
