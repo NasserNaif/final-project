@@ -21,7 +21,7 @@ function LandingPage() {
 
           >
             Provides multiple services to private sector companies, which aim
-            to facilitate operational procedures with private sector providers,
+            to facilitate operational projects with private sector providers,
             while providing service level measurement tools, which aim to raise
             the efficiency of service performance.
           </Text>
