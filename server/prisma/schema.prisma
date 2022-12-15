@@ -38,7 +38,7 @@ model Project {
   deadLine            String
   deadLineOpningOffer String
   isCompleted         Boolean    @default(false)
-  companyName         String?
+  companyName         String ?
   user_id             String
   userID              User?      @relation(fields: [user_id], references: [id])
   request             Requests[]

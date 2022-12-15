@@ -44,12 +44,10 @@ export default function form() {
             rounded={"2xl"}
           >
             <Text>
-              has description has description has description has description
-              has description has description has description has description
-              has description has description has description has description
+            provider1
+            
             </Text>
           </HStack>
-          <Text></Text>
           <Button
             w={"250px"}
             bg={"#000"}

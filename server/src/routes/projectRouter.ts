@@ -15,20 +15,9 @@ const projectRouter = express.Router();
 
 projectRouter.get(`/user`, getUser)
 projectRouter.get(`/`, getAllProject);
-projectRouter.get(
-  `/request/:id`,
-  protect,
-  authorize("CLIENT"),
-  getProjectsRequest
-);
+projectRouter.get(`/request/:id`,protect,authorize("CLIENT"),getProjectsRequest);
 projectRouter.get(`/profile/:id`, protect, getProviderProfile);
 
-projectRouter.post(
-  `/`,
-  protect,
-  authorize("CLIENT"),
-  validate(postProjectSchema),
-  postProject
-);
+projectRouter.post(`/`,protect,authorize("CLIENT"),validate(postProjectSchema),postProject);
 
 export default projectRouter;

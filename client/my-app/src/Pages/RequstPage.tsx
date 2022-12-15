@@ -10,11 +10,7 @@ import {
   VStack,
   Textarea,
   HStack,
-<<<<<<< HEAD
-  Input
-=======
   useToast,
->>>>>>> master
 } from "@chakra-ui/react";
 import { useNavigate, useParams } from "react-router-dom";
 
@@ -96,16 +92,6 @@ export default function RequestPage() {
         <VStack alignItems={"center"}>
           <Heading
             fontWeight={300}
-<<<<<<< HEAD
-            fontSize={{ base: '2xl', sm: '2xl', md: '2xl' }}
-            lineHeight={'150%'} color={'#120f2d'}>please fill your request</Heading>
-    </VStack>
-        <VStack align={'start'} p={3}>
-        
-            
-            <Textarea placeholder={'description'} bg={'#fff'} w={'80%'} ></Textarea>
-           <Input type={"file"} padding={2}></Input>
-=======
             fontSize={{ base: "2xl", sm: "4xl", md: "4xl" }}
             lineHeight={"110%"}
             color={"#120f2d"}
@@ -138,7 +124,6 @@ export default function RequestPage() {
           <HStack p={4}>
             <Input type={"file"}></Input>
           </HStack>
->>>>>>> master
         </VStack>
 
         <Flex justifyContent={"center"} alignItems={"center"}>
