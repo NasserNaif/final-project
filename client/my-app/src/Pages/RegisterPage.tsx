@@ -9,6 +9,7 @@ import {
   RadioGroup,
   useToast,
   background,
+  Box,
 } from "@chakra-ui/react";
 
 import React, { useState } from "react";
@@ -97,7 +98,7 @@ function RegisterPage() {
         boxShadow={"2xl"}
         bg={useColorModeValue("#e6e3e4", "white.900")}
         borderRadius={20}
-        p={20}
+        p={50}
       >
               <Text fontSize='20px' as="b">please create your account:</Text>
 
@@ -107,7 +108,7 @@ function RegisterPage() {
           onChange={(e) => setUsername(e.target.value)}
           type="text"
           value={username}
-          w={["20vw", "25vw"]}
+          w={["20vw", "20vw"]}
         />
         <Input
         placeholder="Company name"
@@ -115,7 +116,7 @@ function RegisterPage() {
           onChange={(e) => setName(e.target.value)}
           type="text"
           value={name}
-          w={["20vw", "25vw"]}
+          w={["20vw", "20vw"]}
         />
         <Input
         placeholder="Commercial record"
@@ -123,7 +124,7 @@ function RegisterPage() {
           bg={""}
           type="text"
           value={commercialRecord}
-          w={["20vw", "25vw"]}
+          w={["20vw", "20vw"]}
         />
         <Input
         placeholder="Email"
@@ -131,7 +132,7 @@ function RegisterPage() {
           onChange={(e) => setEmail(e.target.value)}
           type="email"
           value={email}
-          w={["20vw", "25vw"]}
+          w={["20vw", "20vw"]}
         />
         <Input
         placeholder="Phone number"
@@ -139,7 +140,7 @@ function RegisterPage() {
           onChange={(e) => setPhoneNumber(e.target.value)}
           type="text"
           value={phoneNumber}
-          w={["20vw", "25vw"]}
+          w={["20vw", "20vw"]}
         />
         <Input
         placeholder="Password"
@@ -147,7 +148,7 @@ function RegisterPage() {
           onChange={(e) => setPassword(e.target.value)}
           type="password"
           value={password}
-          w={["20vw", "25vw"]}
+          w={["20vw", "20vw"]}
         />
         <Input
         placeholder="Confirm password"
@@ -155,21 +156,21 @@ function RegisterPage() {
           type="password"
           value={confirmpassword}
           onChange={(e) => setConfirmPassword(e.target.value)}
-          w={["20vw", "25vw"]}
+          w={["20vw", "20vw"]}
         />
 
         <RadioGroup
-          w={"50%"}
+          w={"100%"}
           onChange={setRole}
           value={role}
           justifyContent={"space-between"}
-          bg="gray"
-          borderRadius={20}
 
         >
           <HStack justify={"space-between"} w={"50%"} color={"white"} >
-            <Radio value="CLIENT">CLIENT</Radio>
-            <Radio value="PROVIDER">PROVIDER</Radio>
+            <Radio value="CLIENT"><Box bg="gray" borderRadius={8}justifyContent={"space-between"}
+>CLIENT</Box></Radio>
+            <Radio value="PROVIDER"><Box bg="gray" borderRadius={8}justifyContent={"space-between"}
+>PROVIDER</Box></Radio>
           </HStack>
         </RadioGroup>
 
@@ -189,7 +190,7 @@ function RegisterPage() {
           </Button>
         </HStack>
         <HStack>
-          <Text>already have account ?</Text> <Link to={"/login"}>Sign in</Link>
+          <Text>Already have account ?</Text> <Link to={"/login"}>Sign in</Link>
         </HStack>
       </VStack>
     </VStack>
