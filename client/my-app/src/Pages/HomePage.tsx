@@ -27,7 +27,6 @@ function HomePage() {
 
   return (
     <VStack w={"100%"} bg="#e6e3e4">
-      
       <Grid
         p="0 0 20vh 0px"
         templateColumns={["repeat(1, 1fr)", "repeat(1, 1fr)", "repeat(2, 1fr)"]}
