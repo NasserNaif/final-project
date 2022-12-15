@@ -15,18 +15,20 @@ function HomePage() {
       },
     });
     const data = await request.json();
+    setProjectData(data);
     console.log(data);
-    
-    // setProjectData(data);
   };
 
   useEffect(() => {
     fetchData();
   }, []);
+  const apply = (id: any) => {
+    navigate(`/postrequset/${id}`);
+  };
 
   return (
     <VStack w={"100%"} bg="#e6e3e4">
-      <Button onClick={() => navigate("/newproject")}>add Project</Button>
+      
       <Grid
         p="0 0 20vh 0px"
         templateColumns={["repeat(1, 1fr)", "repeat(1, 1fr)", "repeat(2, 1fr)"]}
@@ -38,10 +40,11 @@ function HomePage() {
             id={elm.id}
             projectname={elm.projectName}
             projectNumber={elm.id}
-            // onClick={() => applyFunc(elm.id)}
             dsubmit={elm.deadLine}
             dOpen={elm.deadLineOpningOffer}
             description={elm.projectDiscription}
+            butten={"Apply"}
+            onClick={() => apply(elm.id)}
           />
         ))}
       </Grid>

@@ -6,7 +6,11 @@ import { paramProfile, projectParamsType } from "../zodSchema/projectSchema";
 
 export const getAllProject = async (req: Request, res: Response) => {
   try {
-    const allProject = await prisma.project.findMany();
+    const allProject = await prisma.project.findMany({
+      include: {
+        userID: true,
+      },
+    });
 
     return res.status(200).json(allProject);
   } catch (error) {
@@ -35,17 +39,18 @@ export const getProjectsRequest = async (req: Request, res: Response) => {
     const { projectID } = req.params as projectParamsType;
     const user = res.locals.user;
 
-    const findProject = await prisma.project.findMany({
+    const findRequest = await prisma.project.findMany({
       where: { id: projectID, user_id: user.id },
       select: { request: true },
     });
 
-    if (!findProject) {
+    if (!findRequest) {
       return res.status(400).json({
         message: "sorry this project doesn't exist !",
       });
     }
-    return res.status(200).json(findProject);
+
+    return res.status(200).json(findRequest);
   } catch (error) {
     console.log(error);
     return res.status(500).json({
@@ -54,22 +59,22 @@ export const getProjectsRequest = async (req: Request, res: Response) => {
   }
 };
 
-export const getProviderProfile = async (req: Request, res: Response) => {
+export const getMyproject = async (req: Request, res: Response) => {
   try {
-    const { user_id } = req.params as paramProfile;
+    const { id } = res.locals.user as IUser;
 
-    const providerProfile = await prisma.profile.findFirst({
-      where: { user_id },
-      select: { summary: true, attament: true },
+    const myProject = await prisma.user.findMany({
+      where: { id },
+      select: { project: true },
     });
 
-    if (!providerProfile) {
+    if (!myProject) {
       return res.status(401).json({
         message: "this account doesn't have profile !",
       });
     }
 
-    return res.status(200).json(providerProfile);
+    return res.status(200).json(myProject);
   } catch (error) {
     console.log(error);
     return res.status(500).json({
