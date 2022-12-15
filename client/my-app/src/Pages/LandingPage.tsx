@@ -20,7 +20,7 @@ function LandingPage() {
           m={"100px"}
 
           >
-            Provides multipale services to private sector companies, which aim
+            Provides multiple services to private sector companies, which aim
             to facilitate operational procedures with private sector providers,
             while providing service level measurement tools, which aim to raise
             the efficiency of service performance.
