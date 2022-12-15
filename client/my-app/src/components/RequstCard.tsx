@@ -51,8 +51,8 @@ export default function RequstCard(props: any) {
           </HStack>
           <Button
             w={"250px"}
-            bg={"#000"}
-            color={"#fff"}
+            bg={"#233142"}
+            color="whiteAlpha.900"
             _hover={{
               bg: "gray.700",
             }}

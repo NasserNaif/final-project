@@ -8,6 +8,7 @@ import {
   Radio,
   RadioGroup,
   useToast,
+  background,
 } from "@chakra-ui/react";
 
 import React, { useState } from "react";
@@ -83,7 +84,6 @@ function RegisterPage() {
   };
   return (
     <VStack
-    mt={"0%"}
     marginBottom="10%"
       p={5}
       color={"black"}
@@ -94,13 +94,13 @@ function RegisterPage() {
     >
       <VStack
         align={"start"}
-        // boxShadow={"2xl"}
-        // bg={useColorModeValue("#e6e3e4", "gray.900")}
         boxShadow={"2xl"}
         bg={useColorModeValue("#e6e3e4", "white.900")}
         borderRadius={20}
-        p={5}
+        p={20}
       >
+              <Text fontSize='20px' as="b">please create your account:</Text>
+
         <Input
         placeholder="Username"
           bg={""}
@@ -159,14 +159,16 @@ function RegisterPage() {
         />
 
         <RadioGroup
-          w={"100%"}
+          w={"50%"}
           onChange={setRole}
           value={role}
           justifyContent={"space-between"}
           bg="gray"
+          borderRadius={20}
+
         >
-          <HStack justify={"space-between"} w={"50%"} >
-            <Radio value="CLIENT" >CLIENT</Radio>
+          <HStack justify={"space-between"} w={"50%"} color={"white"} >
+            <Radio value="CLIENT">CLIENT</Radio>
             <Radio value="PROVIDER">PROVIDER</Radio>
           </HStack>
         </RadioGroup>
@@ -174,8 +176,8 @@ function RegisterPage() {
         <HStack w="100%" justify={"center"} p={2}>
           <Button
              borderRadius={20}
-            bg={"#1A0202"}
-            color="whiteAlpha.900"
+             bg={"#233142"}
+             color="whiteAlpha.900"
             w={"10em"}
             mt="10"
             onClick={Save}

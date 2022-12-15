@@ -7,10 +7,11 @@ function Footer() {
       position={"fixed"}
       minW={"100vw"}
       bottom={0}
-      p={"1vw"}
+      p={"0.2vw"}
       bg={"#233142"}
       justify="space-between"
       borderTop={"1px solid black"}
+      
     >
       <Text bgGradient='linear(to-l, #B1A777, #AB834C)'
         bgClip='text'>

@@ -19,10 +19,11 @@ export default function Cards(props: any) {
           maxW={"445px"}
           w={"full"}
           bg={useColorModeValue("#E6E3E4", "gray.900")}
-          boxShadow={"2xl"}
           rounded={"md"}
           p={6}
           overflow={"hidden"}
+          boxShadow={"dark-lg"}
+          borderRadius={20}
         >
           <Flex
             h={"200px"}
@@ -39,6 +40,7 @@ export default function Cards(props: any) {
               w={"50%"}
               justifyContent={"center"}
               alignItems={"center"}
+              
             >
               <Image
                 borderRadius="lg"
@@ -82,6 +84,8 @@ export default function Cards(props: any) {
             mt={5}
             rounded={"full"}
             px={6}
+            boxShadow={"dark-lg"}
+
             _hover={{
               bg: "gray.500",
             }}

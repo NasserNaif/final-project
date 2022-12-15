@@ -1,6 +1,7 @@
 import { Button, HStack, Image, Text } from "@chakra-ui/react";
 import { Link, useNavigate } from "react-router-dom";
 
+
 function Nav() {
   const navigate = useNavigate();
   return (
@@ -17,14 +18,14 @@ function Nav() {
       >
         <Image src="/image/Logo.png" h={"3.8em"} />
         <Link to={"/home"}>
-          <Text fontSize={"1.4em"}>Home</Text>
+          <Text fontSize={"1.2em"}>Home</Text>
         </Link>
 
         <Link to={"/myproject"}>
-          <Text fontSize={"1.4em"}>my projects</Text>
+          <Text fontSize={"1.2em"}>Projects</Text>
         </Link>
         <Link to={"/"}>
-          <Text fontSize={"1.4em"}>About</Text>
+          <Text fontSize={"1.2em"}>About</Text>
         </Link>
       </HStack>
       <HStack justify={"start"} align="start">

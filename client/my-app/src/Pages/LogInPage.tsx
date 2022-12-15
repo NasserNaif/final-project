@@ -10,6 +10,7 @@ import {
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
+
 function LogInPage() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -60,7 +61,7 @@ function LogInPage() {
   return (
     <VStack  h={"50vh"} justify={"center"} align={"center"}>
       <VStack
-        boxShadow={"2xl"}
+        boxShadow={"dark-lg"}
         bg={useColorModeValue("#e6e3e4", "gray.900")}
         borderRadius={20}
         p={5}
@@ -71,6 +72,8 @@ function LogInPage() {
           <Input
           placeholder="Username"
             bg={""}
+            marginTop={"50px"}
+
             onChange={(e) => setUsername(e.target.value)}
             value={username}
             w={["30vw", "30vw", "20vw"]}
@@ -82,10 +85,16 @@ function LogInPage() {
           <Input
           placeholder="Password"
             bg={""}
+            marginTop={"30px"}
+            
             onChange={(e) => setPassword(e.target.value)}
             value={password}
             w={["30vw", "30vw", "20vw"]}
           />
+          
+        </HStack>
+        <HStack>
+          <Text>Forget your password ? </Text>{" "}
         </HStack>
         <HStack>
           <Button
@@ -103,7 +112,7 @@ function LogInPage() {
           </Button>
         </HStack>
         <HStack>
-          <Text>you don't have account ? </Text>{" "}
+          <Text>You don't have account ? </Text>{" "}
           <Link to={"/register"}>Register</Link>
         </HStack>
       </VStack>

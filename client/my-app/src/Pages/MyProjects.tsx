@@ -27,12 +27,14 @@ function MyProjects() {
     navigate(`/requestofproject/${id}`);
   };
   return (
-    <VStack w={"100%"} bg="#e6e3e4">
+    <VStack w={"100%"} >
       <Button
         leftIcon={<AddIcon />}
-        bg={"#000"}
+        bg={"#233142"}
         color={"#fff"}
         borderRadius={"3xl"}
+        boxShadow={"dark-lg"}
+
         onClick={() => navigate("/newproject")}
       >
         add Project
@@ -43,7 +45,7 @@ function MyProjects() {
         w={"100%"}
       >
         {projectData.map((elm: any) => (
-          <VStack>
+          <VStack >
             <ProjectCards
               key={elm.id}
               id={elm.id}
@@ -52,8 +54,9 @@ function MyProjects() {
               dsubmit={elm.deadLine}
               dOpen={elm.deadLineOpningOffer}
               description={elm.projectDiscription}
-              butten={"show requests"}
+              butten={"Show Requests"}
               onClick={() => requests(elm.id)}
+              
             />
           </VStack>
         ))}

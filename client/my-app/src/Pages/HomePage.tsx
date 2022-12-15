@@ -27,11 +27,12 @@ function HomePage() {
   };
 
   return (
-    <VStack w={"100%"} bg="#e6e3e4">
+    <VStack w={"100%"}
+    >
       
       <Grid
         p="0 0 20vh 0px"
-        templateColumns={["repeat(1, 1fr)", "repeat(1, 1fr)", "repeat(2, 1fr)"]}
+        templateColumns={["repeat(1, 1fr)", "repeat(2, 1fr)", "repeat(3, 1fr)"]}
         w={"100%"}
       >
         {projectData.map((elm: any) => (

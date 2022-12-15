@@ -70,13 +70,14 @@ export default function NewProject() {
   return (
     <Center py="10px" mt="20px">
       <Box
-        maxW={"745px"}
+        maxW={"650px"}
         w={"full"}
         bg={"#E6E3E4"}
-        boxShadow={"2xl"}
         rounded={"md"}
         p={6}
         overflow={"hidden"}
+        boxShadow={"dark-lg"}
+        borderRadius={20}
       >
         <VStack alignItems={"center"}>
           <Heading
@@ -85,7 +86,7 @@ export default function NewProject() {
             lineHeight={"110%"}
             color={"#120f2d"}
           >
-            Create Project
+            <Text margin={"20px"} fontSize='20px' as="b">Create Project</Text>
           </Heading>
         </VStack>
         <VStack align={"start"} p={3}>
@@ -123,13 +124,16 @@ export default function NewProject() {
 
         <Flex justifyContent={"center"} alignItems={"center"}>
           <Button
-            colorScheme={"gray.500"}
-            bg={"#000"}
+            borderRadius={20}
+            color="whiteAlpha.900"
+            bg={"#233142"}
             mt={5}
             rounded={"full"}
             px={6}
             _hover={{
-              bg: "gray.500",
+              bg: "white",
+              textColor:"gray",
+
             }}
             onClick={send}
           >

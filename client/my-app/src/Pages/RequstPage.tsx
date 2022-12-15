@@ -29,7 +29,8 @@ export default function RequestPage() {
   const { projectid } = useParams();
   const toast = useToast();
 
-  console.log(projectid);
+
+  console.log(projectid)
   const submmitRequest = async () => {
     try {
       const request = await fetch(`/api/v1/request`, {
@@ -80,20 +81,21 @@ export default function RequestPage() {
   return (
     <Center py="10px" mt="20px">
       <Box
-        maxW={"645px"}
+        maxW={"650px"}
         w={"full"}
         bg={"#E6E3E4"}
-        boxShadow={"2xl"}
         rounded={"md"}
         p={6}
         overflow={"hidden"}
+        boxShadow={"dark-lg"}
+        borderRadius={20}
       >
         <VStack alignItems={"center"}>
           <Heading
-            fontWeight={300}
-            fontSize={{ base: "2xl", sm: "4xl", md: "4xl" }}
-            lineHeight={"110%"}
             color={"#120f2d"}
+            fontSize='20px' 
+            as="b"
+            margin={"15"}
           >
             please fill your request
           </Heading>
@@ -127,13 +129,15 @@ export default function RequestPage() {
 
         <Flex justifyContent={"center"} alignItems={"center"}>
           <Button
-            colorScheme={"gray.500"}
-            bg={"#000"}
+            borderRadius={20}
+            color="whiteAlpha.900"
+            bg={"#233142"}
             mt={5}
             rounded={"full"}
             px={6}
             _hover={{
-              bg: "gray.500",
+              bg: "white",
+              textColor:"gray",
             }}
             onClick={submmitRequest}
           >

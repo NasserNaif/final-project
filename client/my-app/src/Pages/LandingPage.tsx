@@ -12,8 +12,14 @@ function LandingPage() {
     <HStack >
       <VStack p={10} align="start">
         <VStack align="start" >
-          <Text fontSize={"2em"}>Munagsat</Text>
-          <Text fontSize={["1.1em", "1.3em"]}>
+          <Text fontSize={"2em"} margin={"0.5em"}>MUNAQAST</Text>
+          <Text
+           fontSize={["1em", "1.5em"]}
+           backgroundColor={"chakra-body-bg"}
+          borderRadius={100}
+          m={"100px"}
+
+          >
             Provides multipale services to private sector companies, which aim
             to facilitate operational procedures with private sector providers,
             while providing service level measurement tools, which aim to raise
@@ -26,12 +32,12 @@ function LandingPage() {
           bg={" #233142"}
           color="white"
           w={"40"}
-          borderRadius="20"
+          borderRadius={"20"}
         >
           Get Start
         </Button>
       </VStack>
-      <Image src="image/Logo.png" w={["20vw", "30vw"]} />
+      <Image src="image/Logo.png" w={["10vw", "20vw"]} />
     </HStack>
   );
 }
