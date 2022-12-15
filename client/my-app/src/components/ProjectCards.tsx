@@ -55,12 +55,7 @@ export default function Cards(props: any) {
               </Text>
               <Text>{props.projectname}</Text>
             </HStack>
-            <HStack align={"start"}>
-              <Text className="textDesc" fontWeight={700}>
-                Company Name :{" "}
-              </Text>
-              <Text>{props.compname}</Text>
-            </HStack>
+           
 
             <HStack>
               <Text fontWeight={700}>Deadline for submitting offers: </Text>
